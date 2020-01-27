@@ -1,0 +1,9 @@
+{
+  "/backend/api": {
+    "target": "https://tasktest.free.beeceptor.com/my/api/path",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/backend/api": "/"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+
+<div style="display: block">
+    <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"></canvas>
+</div>
+<div style="display: block;">
+    <canvas baseChart width="400" height="400"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [options]="lineChartOptions"
+            [chartType]="lineChartType"></canvas>
+</div>
