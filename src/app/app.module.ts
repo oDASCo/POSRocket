@@ -5,6 +5,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MainPageComponent} from './main-page/main-page.component';
 import {ReportingPageModule} from './reporting-page/reporting-page.module'
+import {SharedModule} from "./shared/shared.module";
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 @NgModule({
     declarations: [
@@ -14,7 +16,8 @@ import {ReportingPageModule} from './reporting-page/reporting-page.module'
     imports: [
         BrowserModule,
         AppRoutingModule,
-        ReportingPageModule
+        ReportingPageModule,
+        SharedModule
     ],
     providers: [],
     bootstrap: [AppComponent]

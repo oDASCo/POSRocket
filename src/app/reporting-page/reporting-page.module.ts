@@ -8,6 +8,7 @@ import {ReportingPageService} from "./reporting-page.service";
 
 import {HttpClientModule} from "@angular/common/http";
 import { ChartsModule } from 'ng2-charts';
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { ChartsModule } from 'ng2-charts';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        ChartsModule
+        ChartsModule,
+        SharedModule
     ],
     providers: [ReportingPageService]
 })

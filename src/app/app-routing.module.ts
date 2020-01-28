@@ -5,6 +5,7 @@ import {MainPageComponent} from "./main-page/main-page.component";
 
 
 const routes: Routes = [
+    {path: '', component: ReportingPageComponent},
     {path: 'report', component: ReportingPageComponent},
     {path: 'main', component: MainPageComponent},
 ];
