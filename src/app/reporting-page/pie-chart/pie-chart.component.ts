@@ -22,7 +22,7 @@ export class PieChartComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getData();
+    // this.getData();
   }
 
 

@@ -11,6 +11,8 @@ import { ChartsModule } from 'ng2-charts';
 import {SharedModule} from "../shared/shared.module";
 import { LinearChartComponent } from './linear-chart/linear-chart.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
     declarations: [
@@ -23,7 +25,9 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
         AppRoutingModule,
         HttpClientModule,
         ChartsModule,
-        SharedModule
+        SharedModule,
+        MatSlideToggleModule,
+        MatTableModule
     ],
     providers: [ReportingPageService]
 })

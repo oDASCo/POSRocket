@@ -1,3 +1,5 @@
+@import "../../assets/styles/variables";
+
 .report-page {
   width: 100%;
   display: flex;
@@ -10,7 +12,7 @@
     cursor: pointer;
     padding: 10px 15px;
     &.active {
-      border-bottom: 2px solid aquamarine;
+      border-bottom: 2px solid $mainColor;
     }
   }
 }

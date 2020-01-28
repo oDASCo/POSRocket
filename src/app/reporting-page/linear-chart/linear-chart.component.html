@@ -1,5 +1,8 @@
+<div class="toggle-bar">
+    <mat-slide-toggle [checked]="checked" (change)="toggleActive()">Only active users</mat-slide-toggle>
+</div>
 <div style="display: block;">
-    <canvas baseChart width="400" height="400"
+    <canvas baseChart height="40vh" width="80vw"
             [datasets]="lineChartData"
             [labels]="lineChartLabels"
             [colors]="lineChartColors"

@@ -3,21 +3,22 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {MainPageComponent} from './main-page/main-page.component';
 import {ReportingPageModule} from './reporting-page/reporting-page.module'
 import {SharedModule} from "./shared/shared.module";
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MainPageModule} from "./main-page/main-page.module";
 
 @NgModule({
     declarations: [
-        AppComponent,
-        MainPageComponent
+        AppComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         ReportingPageModule,
-        SharedModule
+        SharedModule,
+        BrowserAnimationsModule,
+        MainPageModule
     ],
     providers: [],
     bootstrap: [AppComponent]

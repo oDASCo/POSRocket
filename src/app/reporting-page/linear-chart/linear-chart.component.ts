@@ -14,6 +14,7 @@ export class LinearChartComponent implements OnInit {
 
   public clients: Array<any>;
   private balancesForChart = [];
+  public checked = false;
 
 
   public lineChartData = [
@@ -61,7 +62,7 @@ export class LinearChartComponent implements OnInit {
   };
 
   public lineChartColors = [
-    { // grey
+    {
       backgroundColor: 'rgba(148,159,177,0.2)',
       borderColor: 'rgba(148,159,177,1)',
       pointBackgroundColor: 'rgba(148,159,177,1)',
@@ -77,8 +78,13 @@ export class LinearChartComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getData();
+    // this.getData();
   }
+
+  public toggleActive() {
+    this.checked = !this.checked;
+  }
+
 
   private compareBalance(a, b) {
     if ( a.balance < b.balance ){

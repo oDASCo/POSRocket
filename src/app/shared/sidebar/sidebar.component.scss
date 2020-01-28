@@ -1,7 +1,9 @@
+@import "../../../assets/styles/variables";
+
 .sidebar {
   height: 100vh;
-  padding: 15px;
-  background-color: aquamarine;
+  padding: 60px 0;
+  background-color: $mainColor;
   width: 10%;
   min-width: 100px;
   display: flex;
@@ -12,10 +14,12 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    margin-bottom: 10px;
-    opacity: .8;
+    padding: 15px;
     &.active {
-      opacity: 1;
+      background-color: $mainDark;
+    }
+    &:hover {
+      background-color: $mainDark;
     }
   }
   &__item {
