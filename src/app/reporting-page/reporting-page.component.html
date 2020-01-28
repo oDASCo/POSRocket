@@ -1,18 +1,14 @@
-
-
-    <div style="display: block">
-        <canvas baseChart
-                [data]="pieChartData"
-                [labels]="pieChartLabels"
-                [chartType]="pieChartType"></canvas>
+<div class="report-page">
+    <div class="report-page__tabs">
+        <div class="report-page__tab"
+             [routerLinkActive]="'active'"
+             [routerLink]="['/report', 'linear']">Linear</div>
+        <div class="report-page__tab"
+             [routerLinkActive]="'active'"
+             [routerLink]="['/report', 'pie']">Pie</div>
     </div>
-    <div style="display: block;">
-        <canvas baseChart width="400" height="400"
-                [datasets]="lineChartData"
-                [labels]="lineChartLabels"
-                [colors]="lineChartColors"
-                [legend]="lineChartLegend"
-                [options]="lineChartOptions"
-                [chartType]="lineChartType"></canvas>
+    <div class="report-page__content">
+        <router-outlet></router-outlet>
     </div>
+</div>
 

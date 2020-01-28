@@ -9,10 +9,14 @@ import {ReportingPageService} from "./reporting-page.service";
 import {HttpClientModule} from "@angular/common/http";
 import { ChartsModule } from 'ng2-charts';
 import {SharedModule} from "../shared/shared.module";
+import { LinearChartComponent } from './linear-chart/linear-chart.component';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 @NgModule({
     declarations: [
-        ReportingPageComponent
+        ReportingPageComponent,
+        LinearChartComponent,
+        PieChartComponent
     ],
     imports: [
         BrowserModule,

@@ -1,0 +1,16 @@
+.report-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  &__tabs {
+    display: flex;
+  }
+  &__tab {
+    cursor: pointer;
+    padding: 10px 15px;
+    &.active {
+      border-bottom: 2px solid aquamarine;
+    }
+  }
+}
