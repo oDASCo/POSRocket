@@ -1,6 +1,6 @@
 {
   "/backend/api": {
-    "target": "https://tasktest.free.beeceptor.com/my/api/path",
+    "target": "https://gist.github.com/oDASCo/3f4014d24dc79e1e29b58bfa96afaa1b",
     "changeOrigin": true,
     "pathRewrite": {
       "^/backend/api": "/"

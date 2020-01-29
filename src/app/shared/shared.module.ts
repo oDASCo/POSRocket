@@ -5,11 +5,13 @@ import {AppRoutingModule} from '../app-routing.module';
 
 import {HttpClientModule} from "@angular/common/http";
 import {SidebarComponent} from "./sidebar/sidebar.component";
+import {DateformatPipe} from "./date.pipe";
 
 
 @NgModule({
     declarations: [
-        SidebarComponent
+        SidebarComponent,
+        DateformatPipe
     ],
     imports: [
         BrowserModule,
@@ -17,7 +19,8 @@ import {SidebarComponent} from "./sidebar/sidebar.component";
         HttpClientModule
     ],
     exports: [
-        SidebarComponent
+        SidebarComponent,
+        DateformatPipe
     ],
     providers: []
 })

@@ -2,9 +2,9 @@
     <mat-slide-toggle [checked]="checked" (change)="toggleActive()">Only active users</mat-slide-toggle>
 </div>
 <div style="display: block;">
-    <canvas baseChart height="40vh" width="80vw"
-            [datasets]="lineChartData"
-            [labels]="lineChartLabels"
+    <canvas baseChart height="35vh" width="80%"
+            [datasets]="reportingPageService.lineChartData"
+            [labels]="reportingPageService.lineChartLabels"
             [colors]="lineChartColors"
             [legend]="lineChartLegend"
             [options]="lineChartOptions"

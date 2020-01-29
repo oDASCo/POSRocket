@@ -62,6 +62,23 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "dev": {
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": false,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/dev.environment.ts"
+                }
+              ]
             }
           }
         },
@@ -73,6 +90,9 @@
           "configurations": {
             "production": {
               "browserTarget": "POSRocket:build:production"
+            },
+            "dev": {
+              "browserTarget": "POSRocket:build:dev"
             }
           }
         },

@@ -16,23 +16,11 @@ export class PieChartComponent implements OnInit {
   public pieChartData = [0, 0];
   public pieChartType = 'pie';
 
-  public clients: Array<any>;
-  private males = [];
-  private females = [];
-
 
   ngOnInit() {
-    // this.getData();
+    this.pieChartData = this.reportingPageService.pieChartData;
   }
 
 
-  public getData() {
-    this.reportingPageService.getInfoList().subscribe( (data) => {
-          this.clients = data;
-          this.males = this.clients.filter(item => item.gender === 'male');
-          this.females = this.clients.filter(item => item.gender === 'female');
-          this.pieChartData = [this.females.length, this.males.length];
-        }
-    );
-  }
+
 }

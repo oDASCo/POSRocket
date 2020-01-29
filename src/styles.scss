@@ -1,34 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import "assets/styles/variables";
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   outline: none;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
 
 .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
   background-color: $lightGreen;
 }
+
 .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
   background-color: $mainColor;
 }
-.mat-slide-toggle-content{
+
+.mat-slide-toggle-content {
   font-size: 14px;
   color: $mainColor;
   margin-right: 10px;
 }
+
 mat-slide-toggle .mat-slide-toggle-label {
   flex-direction: row-reverse;
 }
 
 table.mat-table {
-  width: 90%;
+  width: 100%;
 }
 
 app-main-page {
@@ -37,9 +49,68 @@ app-main-page {
   padding: 80px 20px;
   flex-direction: column;
 }
+
 .mat-form-field.mat-focused .mat-form-field-label {
   color: $mainColor;
 }
-.mat-form-field-appearance-outline .mat-form-field-outline {
-  color: white;
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: $mainColor;
+}
+
+td.mat-cell.cdk-column-tags.mat-column-tags {
+  padding: 15px 0;
+  li {
+    padding: 2px 0;
+    text-decoration: underline;
+  }
+}
+.table-picture {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+}
+.table-icon {
+  width: 15px;
+  height: 15px;
+  margin: auto;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.toggle-bar {
+  padding: 20px 10px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+tbody{
+  tr{
+    &:hover{
+      background-color: #dfdfdf;
+    }
+    .table-link {
+      cursor: pointer;
+      background-color: #1f7258;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  }
+}
+td.mat-cell.cdk-column-isActive.mat-column-isActive {
+  display: flex;
+  min-height: 180px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  flex-direction: column;
+}
+.hidden-tags {
+  position: absolute;
+  z-index: -10;
 }

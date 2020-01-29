@@ -9,11 +9,15 @@ import {MainPageComponent} from "./main-page.component";
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material';
+import {MatInputModule, MatSlideToggleModule} from '@angular/material';
+import {MainPageService} from "./main-page.service";
+import {SharedModule} from "../shared/shared.module";
+import { ClientInfoComponent } from './client-info/client-info.component';
 
 @NgModule({
     declarations: [
-        MainPageComponent
+        MainPageComponent,
+        ClientInfoComponent
     ],
     imports: [
         BrowserModule,
@@ -23,9 +27,11 @@ import {MatInputModule} from '@angular/material';
         MatPaginatorModule,
         MatSortModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        SharedModule,
+        MatSlideToggleModule
     ],
-    providers: []
+    providers: [MainPageService]
 })
 export class MainPageModule {
 }

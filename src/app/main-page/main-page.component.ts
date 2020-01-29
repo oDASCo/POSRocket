@@ -2,44 +2,88 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatSort} from "@angular/material/sort";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
+import {MainPageService} from "./main-page.service";
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.scss']
+    selector: 'app-main-page',
+    templateUrl: './main-page.component.html',
+    styleUrls: ['./main-page.component.scss']
 })
 
 
 export class MainPageComponent implements OnInit {
 
+    public clients;
+    public allClients = [];
+    public checked = false;
+    public activeClients = [];
+    public displayedColumns: string[] = ['index', 'picture', 'name', 'tags', 'friends', 'registered', 'phone', 'isActive'];
 
-  private dataArr = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-    {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-    {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  ];
+    @ViewChild(MatSort, {static: true}) sort: MatSort;
+    @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  public displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  public dataSource = new MatTableDataSource(this.dataArr);
+    constructor(
+        private mainPageService: MainPageService
+    ) {
+    }
 
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+    ngOnInit() {
+        this.mainPageService.getInfoList().subscribe(data => {
+            data.forEach(item => {
+                item.tags = item.tags.join(" ");
+            });
+            console.log(data);
+            this.allClients = data;
+            this.clients = new MatTableDataSource(data);
+            this.clients.sort = this.sort;
+            this.clients.paginator = this.paginator;
+            this.activeClients = this.allClients.filter(item => item.isActive);
+        });
 
-  constructor() { }
+    }
 
-  ngOnInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-  }
+    public toggleActive() {
+        this.checked = !this.checked;
+        if (this.checked) {
+            this.clients = new MatTableDataSource(this.activeClients);
+            this.clients.sort = this.sort;
+            this.clients.paginator = this.paginator;
+        } else {
+            this.clients = new MatTableDataSource(this.allClients);
+            this.clients.sort = this.sort;
+            this.clients.paginator = this.paginator;
+        }
+    }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+    applyFilter(filterValue: string) {
+        // console.log(filterValue);
+        // console.log(this.clients);
+        // let arrayForFindTags = [];
+        //
+        // this.allClients.forEach(item => {
+        //     arrayForFindTags.push({
+        //         id: item._id,
+        //         tags: item.tags
+        //     });
+        // });
+        //
+        // let idArray = [];
+        // idArray = arrayForFindTags.filter(item => {
+        //     return item.tags.join(' ').startsWith(filterValue);
+        // });
+        // console.log(idArray);
+        // let result = [];
+        //
+        // idArray.forEach(a => {
+        //     console.log(a);
+        //     result = this.allClients.filter(item => item._id === a.id);
+        // });
+        // console.log(result);
+        // this.clients = new MatTableDataSource(result);
+        // this.clients.sort = this.sort;
+        // this.clients.paginator = this.paginator;
+
+
+        this.clients.filter = filterValue.trim().toLowerCase();
+    }
 }
