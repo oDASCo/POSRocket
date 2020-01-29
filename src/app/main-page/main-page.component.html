@@ -82,7 +82,10 @@
                         </g>
                     </svg>
                 </div>
-                <div class="table-link"  [routerLink]="['/main', element._id]">More...</div>
+                <div class="table-link"
+                     [routerLink]="['/main', element._id]"
+                     (click)="goToClientPage(element)"
+                >More...</div>
             </td>
         </ng-container>
 

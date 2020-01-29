@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from "../../environments/environment";
+import {IClients} from "../shared/interfaces/Client.interface";
 
 @Injectable()
 export class ReportingPageService {
@@ -10,11 +11,10 @@ export class ReportingPageService {
     ) {
     }
 
-    public clients: Array<any>;
+    public clients: IClients;
     private males = [];
     private females = [];
     public balancesForChart = [];
-    public checked = false;
     private activeBalances = [];
     private balances = [];
 
@@ -32,7 +32,7 @@ export class ReportingPageService {
     }
 
     public getData() {
-        this.getInfoList().subscribe((data) => {
+        this.getInfoList().subscribe((data: IClients) => {
                 this.clients = data;
                 this.males = this.clients.filter(item => item.gender === 'male');
                 this.females = this.clients.filter(item => item.gender === 'female');
