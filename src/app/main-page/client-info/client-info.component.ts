@@ -65,7 +65,6 @@ export class ClientInfoComponent implements OnInit {
         });
       });
     });
-
   }
 
   public openEditMode() {
