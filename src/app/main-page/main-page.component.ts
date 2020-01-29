@@ -29,15 +29,27 @@ export class MainPageComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.mainPageService.getInfoList().subscribe((data: IClients) => {
+        this.mainPageService.getInfoList().subscribe(data => {
             data.forEach(item => {
                 item.tags = item.tags.join(" ");
+                let friendsStr = "";
+                item.friends.forEach(friend =>{
+                    friendsStr += friend.name + " "
+                });
+                item.friends = friendsStr;
             });
             this.allClients = data;
             this.clients = new MatTableDataSource(data);
             this.clients.sort = this.sort;
             this.clients.paginator = this.paginator;
             this.activeClients = this.allClients.filter(item => item.isActive);
+            this.clients.filterPredicate = (dataB: Element, filter: string) => {
+                let name = dataB.name.toLowerCase();
+                let tags = dataB.tags.toLowerCase();
+                let phone = dataB.phone.toLowerCase();
+                let friends = dataB.friends.toLowerCase();
+                return name.indexOf(filter) !== -1 || tags.indexOf(filter) !== -1 || phone.indexOf(filter) !== -1 || friends.indexOf(filter) !== -1;
+            };
         });
 
     }

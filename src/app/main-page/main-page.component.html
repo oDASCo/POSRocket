@@ -42,9 +42,10 @@
         <ng-container matColumnDef="friends">
             <th mat-header-cell mat-sort-header *matHeaderCellDef> Friends</th>
             <td mat-cell *matCellDef="let element">
-                <ul>
+                <!--<ul>
                     <li *ngFor="let friend of element.friends">{{friend.name}}</li>
-                </ul>
+                </ul>-->
+                {{element.friends}}
             </td>
         </ng-container>
 
