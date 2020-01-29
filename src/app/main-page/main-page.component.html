@@ -1,5 +1,5 @@
 <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter by name, tags, phone">
+    <input matInput (keyup)="applyFilter($event.target.value)" [value]="filterStr" placeholder="Filter by name, tags, phone">
 </mat-form-field>
 <div class="toggle-bar">
     <mat-slide-toggle [checked]="checked" (change)="toggleActive()">Only active users</mat-slide-toggle>
@@ -31,10 +31,11 @@
         <ng-container matColumnDef="tags">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Tags</th>
             <td mat-cell *matCellDef="let element">
-<!--                <ul>-->
-<!--                    <li *ngFor="let tag of element.tags">{{tag}}</li>-->
-<!--                </ul>-->
-                {{element.tags}}
+                <div (click)="searchBy(tag)" *ngFor="let tag of element.tagsArr" class="table__tag-item">{{tag}}</div>
+               <!-- <ul>
+                    <li *ngFor="let tag of element.tagsArr">{{tag}}</li>
+                </ul>-->
+<!--                {{element.tags}}-->
 <!--                culpa,su-->
             </td>
         </ng-container>
@@ -42,10 +43,10 @@
         <ng-container matColumnDef="friends">
             <th mat-header-cell mat-sort-header *matHeaderCellDef> Friends</th>
             <td mat-cell *matCellDef="let element">
-                <!--<ul>
-                    <li *ngFor="let friend of element.friends">{{friend.name}}</li>
-                </ul>-->
-                {{element.friends}}
+                <ul>
+                    <li (click)="searchBy(friend.name)" class="table__friends-item" *ngFor="let friend of element.friendsArr">{{friend.name}}</li>
+                </ul>
+<!--                {{element.friends}}-->
             </td>
         </ng-container>
 

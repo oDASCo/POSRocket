@@ -13,7 +13,7 @@ import {IClients} from "../shared/interfaces/Client.interface";
 
 
 export class MainPageComponent implements OnInit {
-
+    public filterStr: string = "";
     public clients: any;
     public allClients:  IClients = [];
     public checked = false;
@@ -31,8 +31,10 @@ export class MainPageComponent implements OnInit {
     ngOnInit() {
         this.mainPageService.getInfoList().subscribe(data => {
             data.forEach(item => {
+                item.tagsArr = item.tags;
                 item.tags = item.tags.join(" ");
                 let friendsStr = "";
+                item.friendsArr = item.friends;
                 item.friends.forEach(friend =>{
                     friendsStr += friend.name + " "
                 });
@@ -73,5 +75,10 @@ export class MainPageComponent implements OnInit {
 
     public applyFilter(filterValue: string) {
         this.clients.filter = filterValue.trim().toLowerCase();
+    }
+
+    public searchBy(filterParam){
+        this.filterStr = filterParam;
+        this.applyFilter(filterParam);
     }
 }
