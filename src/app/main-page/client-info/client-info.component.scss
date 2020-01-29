@@ -1,39 +1,49 @@
 @import "../../../assets/styles/variables";
 
-.info{
+.info {
   padding: 60px 20px;
+
   &__title {
     font-size: 30px;
   }
+
   &__main {
     display: flex;
     justify-content: space-between;
   }
-  &__controls {
 
+  &__controls {
+    display: flex;
   }
+
   &__btn {
     background-color: $mainColor;
-    padding: 8px 12px;
-    border-radius: 5px;
+    padding: 10px 12px 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 10px;
 
     svg {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
     }
   }
+
   &__wrapperContent {
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
   }
+
   &__field {
     width: 48%;
     margin: 10px 0;
   }
+
   &__fieldTitle {
     position: relative;
     display: inline;
+
     &:after {
       content: "";
       position: absolute;
@@ -44,8 +54,10 @@
       background-color: $mainColor;
     }
   }
+
   &__fieldValue {
     margin-top: 24px;
+    display: flex;
+    flex-direction: column;
   }
 }
-

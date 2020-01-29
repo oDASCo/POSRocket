@@ -43,7 +43,7 @@ export class MainPageComponent implements OnInit {
             this.clients.sort = this.sort;
             this.clients.paginator = this.paginator;
             this.activeClients = this.allClients.filter(item => item.isActive);
-            this.clients.filterPredicate = (dataB: Element, filter: string) => {
+            this.clients.filterPredicate = (dataB: any, filter: string) => {
                 let name = dataB.name.toLowerCase();
                 let tags = dataB.tags.toLowerCase();
                 let phone = dataB.phone.toLowerCase();

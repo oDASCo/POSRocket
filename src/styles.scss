@@ -58,6 +58,11 @@ app-main-page {
   background-color: $mainColor;
 }
 
+.info .mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #757575;
+  height: 1px;
+}
+
 td.mat-cell.cdk-column-tags.mat-column-tags {
   padding: 15px 0;
   li {
@@ -113,4 +118,7 @@ td.mat-cell.cdk-column-isActive.mat-column-isActive {
 .hidden-tags {
   position: absolute;
   z-index: -10;
+}
+.info .mat-form-field {
+  width: 40%;
 }
