@@ -104,7 +104,7 @@ tbody{
 }
 td.mat-cell.cdk-column-isActive.mat-column-isActive {
   display: flex;
-  min-height: 180px;
+  min-height: 260px;
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
@@ -113,4 +113,21 @@ td.mat-cell.cdk-column-isActive.mat-column-isActive {
 .hidden-tags {
   position: absolute;
   z-index: -10;
+}
+
+.table__tag-item{
+  display: table;
+  padding: 5px;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  background-color: $mainColor;
+  cursor: pointer;
+}
+
+.table__friends-item{
+  text-decoration: underline;
+  padding: 2px 0;
+  cursor: pointer;
 }
