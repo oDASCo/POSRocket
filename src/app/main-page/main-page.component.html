@@ -1,11 +1,16 @@
-<mat-form-field>
+<app-loader *ngIf="loading"></app-loader>
+<mat-form-field *ngIf="!loading">
     <input matInput (keyup)="applyFilter($event.target.value)" [value]="filterStr" placeholder="Filter by name, tags, phone">
 </mat-form-field>
-<div class="toggle-bar">
+<div class="toggle-bar" *ngIf="!loading">
     <mat-slide-toggle [checked]="checked" (change)="toggleActive()">Only active users</mat-slide-toggle>
 </div>
-<div class="mat-elevation-z8">
-    <table mat-table [dataSource]="clients" matSort>
+<div class="mat-elevation-z8" *ngIf="!loading">
+    <table mat-table [dataSource]="clients" matSort
+           cdkDropList
+           [cdkDropListData]="clients.data"
+           (cdkDropListDropped)="dropTable($event)"
+    >
 
         <ng-container matColumnDef="index">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> No.</th>
@@ -97,7 +102,7 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" cdkDrag></tr>
     </table>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

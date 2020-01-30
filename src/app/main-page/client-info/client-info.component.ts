@@ -22,9 +22,11 @@ export class ClientInfoComponent implements OnInit {
     public form: FormGroup;
     public genders = ['male', 'female'];
     public selected;
-
+    public loading = true;
+    public success = false;
 
     ngOnInit() {
+        this.loading = true;
         this.form = new FormGroup({
             name: new FormControl(),
             age: new FormControl(),
@@ -42,6 +44,7 @@ export class ClientInfoComponent implements OnInit {
         });
         this.route.params.subscribe((params: Params) => {
             this.mainPageService.getInfoList().subscribe(data => {
+                this.loading = false;
                 this.client = data.filter(item => item._id === params.id)[0];
                 this.selected = this.client.gender;
                 this.form = new FormGroup({
@@ -71,10 +74,11 @@ export class ClientInfoComponent implements OnInit {
         });
 
         function PositiveValidator(control: AbstractControl): { [key: string]: boolean } | any {
-            if (!isNaN(control.value)) {
-                if (control.value < 0) {
-                    return {'age': true};
-                }
+            // if (isNaN(+control.value) || control.value < 0) {
+            //     return {'age': true};
+            // }
+            if (control.value < 0) {
+                return {'age': true};
             }
             return false;
         }
@@ -98,6 +102,7 @@ export class ClientInfoComponent implements OnInit {
     }
 
     public onSubmit() {
+        console.log(this.form);
         if (this.form.valid) {
             let generalInfo = {
                 name: this.form.value.name,
@@ -116,8 +121,8 @@ export class ClientInfoComponent implements OnInit {
                 isActive: !!this.form.value.company
             };
             this.client = generalInfo;
-            console.log(generalInfo);
             this.closeEditMode();
+            this.success = true;
         } else {
             console.log('invalid');
         }
@@ -146,5 +151,9 @@ export class ClientInfoComponent implements OnInit {
             });
             this.form.value.friends = '';
         }
+    }
+
+    public closeNotif() {
+        this.success = false;
     }
 }

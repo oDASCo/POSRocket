@@ -8,6 +8,7 @@ import {SharedModule} from "./shared/shared.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MainPageModule} from "./main-page/main-page.module";
 
+
 @NgModule({
     declarations: [
         AppComponent
@@ -21,6 +22,7 @@ import {MainPageModule} from "./main-page/main-page.module";
         MainPageModule
     ],
     providers: [],
+    exports: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {

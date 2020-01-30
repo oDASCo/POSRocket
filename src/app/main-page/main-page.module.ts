@@ -15,6 +15,7 @@ import {SharedModule} from "../shared/shared.module";
 import { ClientInfoComponent } from './client-info/client-info.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from '@angular/material/select';
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import {MatSelectModule} from '@angular/material/select';
         SharedModule,
         MatSlideToggleModule,
         ReactiveFormsModule,
-        MatSelectModule
+        MatSelectModule,
+        DragDropModule
     ],
     providers: [MainPageService]
 })

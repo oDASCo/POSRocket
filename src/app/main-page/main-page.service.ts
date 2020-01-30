@@ -11,6 +11,7 @@ export class MainPageService {
     ) {}
 
     public currentClient: IClient;
+    public loading = true;
 
 
     public getInfoList(): Observable<any> {

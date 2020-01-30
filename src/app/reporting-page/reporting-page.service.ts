@@ -17,7 +17,7 @@ export class ReportingPageService {
     public balancesForChart = [];
     private activeBalances = [];
     private balances = [];
-
+    public loading = true;
 
     public pieChartData = [0, 0];
     public lineChartLabels = [];
@@ -33,6 +33,7 @@ export class ReportingPageService {
 
     public getData() {
         this.getInfoList().subscribe((data: IClients) => {
+                this.loading = false;
                 this.clients = data;
                 this.males = this.clients.filter(item => item.gender === 'male');
                 this.females = this.clients.filter(item => item.gender === 'female');

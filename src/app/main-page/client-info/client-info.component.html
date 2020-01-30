@@ -1,4 +1,6 @@
-<div class="backBtn-container">
+<app-loader *ngIf="loading"></app-loader>
+<app-notification *ngIf="success" (btnAction)='closeNotif()'></app-notification>
+<div class="backBtn-container" *ngIf="!loading">
     <div class="backBtn" [routerLink]="['/main']">
         <svg fill="#19624D" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              viewBox="0 0 447.243 447.243" style="enable-background:new 0 0 447.243 447.243;" xml:space="preserve">
@@ -38,7 +40,7 @@
     </div>
 </div>
 
-<form class="info" [formGroup]="form">
+<form class="info" *ngIf="!loading" [formGroup]="form">
     <div class="info__main">
         <div class="info__fieldValue fieldForName">
             <p *ngIf="!editMode" class="info__title">{{client.name}}</p>
