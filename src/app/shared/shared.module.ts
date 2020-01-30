@@ -5,13 +5,15 @@ import {AppRoutingModule} from '../app-routing.module';
 
 import {HttpClientModule} from "@angular/common/http";
 import {SidebarComponent} from "./sidebar/sidebar.component";
-import {DateformatPipe} from "./date.pipe";
+import {DateformatPipe} from "./pipes/date.pipe";
+import {CurrencyBackPipe} from "./pipes/currencyBack.pipe";
 
 
 @NgModule({
     declarations: [
         SidebarComponent,
-        DateformatPipe
+        DateformatPipe,
+        CurrencyBackPipe
     ],
     imports: [
         BrowserModule,
@@ -20,7 +22,8 @@ import {DateformatPipe} from "./date.pipe";
     ],
     exports: [
         SidebarComponent,
-        DateformatPipe
+        DateformatPipe,
+        CurrencyBackPipe
     ],
     providers: []
 })

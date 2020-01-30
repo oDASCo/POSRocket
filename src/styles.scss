@@ -119,9 +119,20 @@ td.mat-cell.cdk-column-isActive.mat-column-isActive {
   position: absolute;
   z-index: -10;
 }
+
 .info .mat-form-field {
-  width: 40%;
+  width: 72%;
 }
+
+.info .fieldForName .mat-form-field {
+  width: 100%;
+  font-size: 20px;
+}
+
+.info .info__fieldValue .greetingField.mat-form-field {
+  width: 75%;
+}
+
 
 .table__tag-item{
   display: table;
@@ -138,4 +149,36 @@ td.mat-cell.cdk-column-isActive.mat-column-isActive {
   text-decoration: underline;
   padding: 2px 0;
   cursor: pointer;
+}
+.backBtn {
+  cursor: pointer;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+.info__fieldForTag {
+  position: relative;
+  .info_fieldTagAdd {
+    content: url("/assets/icons/plus.svg");
+    cursor: pointer;
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    top: 0;
+    right: 0;
+    padding: 1px 5px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+}
+.info .mat-form-field.mat-form-field-invalid .mat-form-field-ripple,
+.info .mat-form-field.mat-form-field-invalid .mat-form-field-ripple.mat-accent {
+  background-color: $orange;
+}
+.info__fieldValue {
+  &__fieldValueError {
+    font-size: 12px;
+    color: $orange;
+  }
 }

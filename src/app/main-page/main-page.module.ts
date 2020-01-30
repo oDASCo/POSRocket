@@ -14,6 +14,7 @@ import {MainPageService} from "./main-page.service";
 import {SharedModule} from "../shared/shared.module";
 import { ClientInfoComponent } from './client-info/client-info.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import {ReactiveFormsModule} from "@angular/forms";
         MatInputModule,
         SharedModule,
         MatSlideToggleModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatSelectModule
     ],
     providers: [MainPageService]
 })

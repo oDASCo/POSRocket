@@ -15,10 +15,11 @@ import {IClients} from "../shared/interfaces/Client.interface";
 export class MainPageComponent implements OnInit {
     public filterStr: string = "";
     public clients: any;
-    public allClients:  IClients = [];
+    public allClients: IClients = [];
     public checked = false;
     public activeClients: IClients = [];
-    public displayedColumns: string[] = ['index', 'picture', 'name', 'tags', 'friends', 'registered', 'phone', 'isActive'];
+    public displayedColumns: string[] = ['index', 'picture', 'name', 'tags', 'friends', 'registered', 'phone', 'year', 'isActive'];
+    public yearNow = new Date().getFullYear();
 
     @ViewChild(MatSort, {static: true}) sort: MatSort;
     @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -35,7 +36,7 @@ export class MainPageComponent implements OnInit {
                 item.tags = item.tags.join(" ");
                 let friendsStr = "";
                 item.friendsArr = item.friends;
-                item.friends.forEach(friend =>{
+                item.friends.forEach(friend => {
                     friendsStr += friend.name + " "
                 });
                 item.friends = friendsStr;
@@ -77,7 +78,7 @@ export class MainPageComponent implements OnInit {
         this.clients.filter = filterValue.trim().toLowerCase();
     }
 
-    public searchBy(filterParam){
+    public searchBy(filterParam) {
         this.filterStr = filterParam;
         this.applyFilter(filterParam);
     }

@@ -1,7 +1,7 @@
 @import "../../../assets/styles/variables";
 
 .info {
-  padding: 60px 20px;
+  padding: 0 20px 60px;
 
   &__title {
     font-size: 30px;
@@ -10,6 +10,7 @@
   &__main {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   &__controls {
@@ -28,6 +29,9 @@
       height: 20px;
     }
   }
+  &__btnClose {
+    background-color: $orange;
+  }
 
   &__wrapperContent {
     display: flex;
@@ -43,11 +47,12 @@
   &__fieldTitle {
     position: relative;
     display: inline;
+    color: $mainColor;
 
     &:after {
       content: "";
       position: absolute;
-      width: 100%;
+      width: calc(100% + 25px);
       height: 2px;
       top: 24px;
       left: 0;
@@ -55,9 +60,53 @@
     }
   }
 
+  &__fieldValueTags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__fieldTag {
+    padding: 5px 7px;
+    display: block;
+    margin: 0 12px 5px 0;
+    background-color: $lightGreen;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    position: relative;
+    span {
+      cursor: pointer;
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      padding: 1px 5px;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 10px;
+      background-color: $orange;
+    }
+  }
+
   &__fieldValue {
     margin-top: 24px;
     display: flex;
     flex-direction: column;
+    span {
+      font-size: 12px;
+      color: $orange;
+    }
+  }
+}
+.backBtn-container {
+  display: flex;
+  padding: 20px 20px;
+  justify-content: space-between;
+}
+
+.backBtn {
+  cursor: pointer;
+  svg {
+    width: 24px;
+    height: 24px;
   }
 }
