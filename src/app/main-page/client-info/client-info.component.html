@@ -205,7 +205,7 @@
                 </div>
                 <mat-form-field *ngIf="editMode" class="example-full-width info__fieldForTag">
                     <input matInput
-                           formControlName="tags">
+                           formControlName="tags" [value]="form.value.tags">
                     <span class="info_fieldTagAdd" (click)="addTag()">+</span>
                 </mat-form-field>
             </div>

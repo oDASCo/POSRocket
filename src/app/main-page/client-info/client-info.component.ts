@@ -75,17 +75,21 @@ export class ClientInfoComponent implements OnInit {
     }
 
     public addTag() {
-        this.client.tags.push(this.form.value.tags);
-        this.form.value.tags = '';
+        if (this.form.value.tags) {
+            this.client.tags.push(this.form.value.tags);
+            this.form.value.tags = '';
+        }
     }
 
     public addFriend() {
-        if (this.client.friends.length < 3) {
-            this.client.friends.push({
-                name: this.form.value.friends,
-                id: 6
-            });
-            this.form.value.friends = '';
+        if (this.form.value.friends) {
+            if (this.client.friends.length < 3) {
+                this.client.friends.push({
+                    name: this.form.value.friends,
+                    id: 6
+                });
+                this.form.value.friends = '';
+            }
         }
     }
 
