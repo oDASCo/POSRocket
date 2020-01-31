@@ -61,7 +61,7 @@ export class ClientInfoComponent implements OnInit {
             this.closeEditMode();
             this.success = true;
         } else {
-            console.log('invalid');
+            console.log('Form invalid');
         }
 
     }
@@ -115,7 +115,7 @@ export class ClientInfoComponent implements OnInit {
             gender: new FormControl(this.client.gender, [
                 Validators.required
             ]),
-            balance: new FormControl(this.client.balance, [
+            balance: new FormControl(+(this.client.balance.replace('$', "").replace(",", "")), [
                 Validators.required, PositiveValidator
             ]),
             company: new FormControl(this.client.company),
@@ -129,10 +129,7 @@ export class ClientInfoComponent implements OnInit {
             friends: new FormControl(),
         });
         function PositiveValidator(control: AbstractControl): { [key: string]: boolean } | any {
-            // if (isNaN(+control.value) || control.value < 0) {
-            //     return {'age': true};
-            // }
-            if (control.value < 0) {
+            if (isNaN(+control.value) || control.value < 0) {
                 return {'age': true};
             }
             return false;

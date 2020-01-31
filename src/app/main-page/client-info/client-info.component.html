@@ -67,8 +67,9 @@
                        value="{{client.name}}"
                        formControlName="name">
             </mat-form-field>
+            {{editMode}}
             <span class="info__fieldValueError"
-                  *ngIf="(form.get('name').invalid && form.get('name').touched)"
+                  *ngIf="(form.get('name').invalid && form.get('name').touched) && editMode"
             >This field is required</span>
         </div>
     </div>
@@ -84,7 +85,7 @@
                            formControlName="age">
                 </mat-form-field>
                 <span class="info__fieldValueError"
-                      *ngIf="(form.get('age').invalid && form.get('age').touched)"
+                      *ngIf="(form.get('age').invalid && form.get('age').touched) && editMode"
                 >This field is required and should be positive and integer</span>
             </div>
         </div>
@@ -100,7 +101,7 @@
                     </mat-select>
                 </mat-form-field>
                 <span class="info__fieldValueError"
-                      *ngIf="(form.get('gender').invalid && form.get('gender').touched)"
+                      *ngIf="(form.get('gender').invalid && form.get('gender').touched) && editMode"
                 >This field is required</span>
             </div>
         </div>
@@ -114,7 +115,7 @@
                            formControlName="balance">
                 </mat-form-field>
                 <span class="info__fieldValueError"
-                      *ngIf="(form.get('balance').invalid && form.get('balance').touched)"
+                      *ngIf="(form.get('balance').invalid && form.get('balance').touched) && editMode"
                 >This field is required and should be positive number</span>
             </div>
         </div>
@@ -224,7 +225,7 @@
                     <span class="info_fieldTagAdd" (click)="addFriend()">+</span>
                 </mat-form-field>
                 <span class="info__fieldValueError"
-                      *ngIf="client.friends.length > 3"
+                      *ngIf="client.friends.length > 3 && editMode"
                 >Maximum number of friends is 3</span>
             </div>
         </div>

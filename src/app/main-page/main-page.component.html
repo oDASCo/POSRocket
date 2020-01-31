@@ -9,7 +9,7 @@
 <div class="mat-elevation-z8" [ngClass]="{'hide': loading}">
     <table mat-table [dataSource]="clients"
            cdkDropList
-           [cdkDropListData]="clients.data"
+           [cdkDropListData]="clients?.data"
            (cdkDropListDropped)="dropTable($event)"
            matSort
     >
