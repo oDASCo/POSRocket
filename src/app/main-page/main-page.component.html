@@ -1,15 +1,17 @@
-<app-loader *ngIf="loading"></app-loader>
-<mat-form-field *ngIf="!loading">
-    <input matInput (keyup)="applyFilter($event.target.value)" [value]="filterStr" placeholder="Filter by name, tags, phone">
+<app-loader [ngClass]="{'hide': !loading}"></app-loader>
+<mat-form-field [ngClass]="{'hide': loading}">
+    <input matInput (keyup)="applyFilter($event.target.value)" [value]="filterStr"
+           placeholder="Filter by name, tags, phone">
 </mat-form-field>
-<div class="toggle-bar" *ngIf="!loading">
+<div class="toggle-bar" [ngClass]="{'hide': loading}">
     <mat-slide-toggle [checked]="checked" (change)="toggleActive()">Only active users</mat-slide-toggle>
 </div>
-<div class="mat-elevation-z8" *ngIf="!loading">
-    <table mat-table [dataSource]="clients" matSort
+<div class="mat-elevation-z8" [ngClass]="{'hide': loading}">
+    <table mat-table [dataSource]="clients"
            cdkDropList
            [cdkDropListData]="clients.data"
            (cdkDropListDropped)="dropTable($event)"
+           matSort
     >
 
         <ng-container matColumnDef="index">
@@ -37,11 +39,11 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Tags</th>
             <td mat-cell *matCellDef="let element">
                 <div (click)="searchBy(tag)" *ngFor="let tag of element.tagsArr" class="table__tag-item">{{tag}}</div>
-               <!-- <ul>
-                    <li *ngFor="let tag of element.tagsArr">{{tag}}</li>
-                </ul>-->
-<!--                {{element.tags}}-->
-<!--                culpa,su-->
+                <!-- <ul>
+                     <li *ngFor="let tag of element.tagsArr">{{tag}}</li>
+                 </ul>-->
+                <!--                {{element.tags}}-->
+                <!--                culpa,su-->
             </td>
         </ng-container>
 
@@ -49,9 +51,10 @@
             <th mat-header-cell mat-sort-header *matHeaderCellDef> Friends</th>
             <td mat-cell *matCellDef="let element">
                 <ul>
-                    <li (click)="searchBy(friend.name)" class="table__friends-item" *ngFor="let friend of element.friendsArr">{{friend.name}}</li>
+                    <li (click)="searchBy(friend.name)" class="table__friends-item"
+                        *ngFor="let friend of element.friendsArr">{{friend.name}}</li>
                 </ul>
-<!--                {{element.friends}}-->
+                <!--                {{element.friends}}-->
             </td>
         </ng-container>
 
@@ -96,8 +99,8 @@
                 </div>
                 <div class="table-link"
                      [routerLink]="['/main', element._id]"
-                     (click)="goToClientPage(element)"
-                >More...</div>
+                >More...
+                </div>
             </td>
         </ng-container>
 

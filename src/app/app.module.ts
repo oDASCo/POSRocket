@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ReportingPageModule} from './reporting-page/reporting-page.module'
 import {SharedModule} from "./shared/shared.module";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MainPageModule} from "./main-page/main-page.module";
 
 

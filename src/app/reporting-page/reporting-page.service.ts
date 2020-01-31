@@ -12,20 +12,18 @@ export class ReportingPageService {
     }
 
     public clients: IClients;
-    private males = [];
-    private females = [];
     public balancesForChart = [];
-    private activeBalances = [];
-    private balances = [];
     public loading = true;
-
     public pieChartData = [0, 0];
     public lineChartLabels = [];
-
-
     public lineChartData = [
         {data: [], label: 'Balance'}
     ];
+
+    private males = [];
+    private females = [];
+    private activeBalances = [];
+    private balances = [];
 
     public getInfoList(): Observable<any> {
         return this.http.get(`${environment.api.url}`);
@@ -34,28 +32,40 @@ export class ReportingPageService {
     public getData() {
         this.getInfoList().subscribe((data: IClients) => {
                 this.loading = false;
-                this.clients = data;
-                this.males = this.clients.filter(item => item.gender === 'male');
-                this.females = this.clients.filter(item => item.gender === 'female');
-                this.pieChartData = [this.females.length, this.males.length];
-
-                this.clients.map(item => {
-                    this.balances.push({
-                        balance: +item.balance.replace('$', '').replace(',', ''),
-                        name: item.name,
-                        isActive: item.isActive
-                    });
-                });
-                this.activeBalances = this.balances.filter(item => item.isActive);
-                this.balances.sort(this.compareBalance);
-                this.activeBalances.sort(this.compareBalance);
-                this.balancesForChart = this.balances.reverse().slice(0, 10);
-                this.activeBalances = this.activeBalances.reverse();
-                this.setBalanceDataForChart();
+                this.transformDataForCharts(data);
             }
         );
     }
 
+    public toggleActive(check) {
+        if (check) {
+            this.balancesForChart = this.activeBalances.slice(0, 10);
+            this.setBalanceDataForChart();
+        } else {
+            this.balancesForChart = this.balances.slice(0, 10);
+            this.setBalanceDataForChart();
+        }
+    }
+
+    private transformDataForCharts(data) {
+        this.clients = data;
+        this.males = this.clients.filter(item => item.gender === 'male');
+        this.females = this.clients.filter(item => item.gender === 'female');
+        this.pieChartData = [this.females.length, this.males.length];
+        this.clients.map(item => {
+            this.balances.push({
+                balance: +item.balance.replace('$', '').replace(',', ''),
+                name: item.name,
+                isActive: item.isActive
+            });
+        });
+        this.activeBalances = this.balances.filter(item => item.isActive);
+        this.balances.sort(this.compareBalance);
+        this.activeBalances.sort(this.compareBalance);
+        this.balancesForChart = this.balances.reverse().slice(0, 10);
+        this.activeBalances = this.activeBalances.reverse();
+        this.setBalanceDataForChart();
+    }
 
     private compareBalance(a, b) {
         if (a.balance < b.balance) {
@@ -66,7 +76,6 @@ export class ReportingPageService {
         }
         return 0;
     }
-
 
     private setBalanceDataForChart() {
         let balanceNames = [];
@@ -79,15 +88,5 @@ export class ReportingPageService {
             {data: balances, label: 'Balance'}
         ];
         this.lineChartLabels = balanceNames;
-    }
-
-    public toggleActive(check) {
-        if (check) {
-            this.balancesForChart = this.activeBalances.slice(0, 10);
-            this.setBalanceDataForChart();
-        } else {
-            this.balancesForChart = this.balances.slice(0, 10);
-            this.setBalanceDataForChart();
-        }
     }
 }

@@ -5,6 +5,6 @@ import {Pipe, PipeTransform} from '@angular/core';
 })
 export class DateformatPipe implements PipeTransform {
     transform(item) {
-        return  item.replace('T', " ").slice(0, 16);
+        return item.replace('T', " ").slice(0, 16);
     }
 }

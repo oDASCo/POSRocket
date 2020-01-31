@@ -12,7 +12,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule, MatSlideToggleModule} from '@angular/material';
 import {MainPageService} from "./main-page.service";
 import {SharedModule} from "../shared/shared.module";
-import { ClientInfoComponent } from './client-info/client-info.component';
+import {ClientInfoComponent} from './client-info/client-info.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from '@angular/material/select';
 import {DragDropModule} from "@angular/cdk/drag-drop";

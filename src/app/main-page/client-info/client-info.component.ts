@@ -27,70 +27,8 @@ export class ClientInfoComponent implements OnInit {
 
     ngOnInit() {
         this.loading = true;
-        this.form = new FormGroup({
-            name: new FormControl(),
-            age: new FormControl(),
-            gender: new FormControl(),
-            balance: new FormControl(),
-            company: new FormControl(),
-            email: new FormControl(),
-            phone: new FormControl(),
-            address: new FormControl(),
-            registered: new FormControl(),
-            greeting: new FormControl(),
-            favoriteFruit: new FormControl(),
-            tags: new FormControl(),
-            friends: new FormControl()
-        });
-        this.route.params.subscribe((params: Params) => {
-            this.mainPageService.getInfoList().subscribe(data => {
-                this.loading = false;
-                this.client = data.filter(item => item._id === params.id)[0];
-                this.selected = this.client.gender;
-                this.form = new FormGroup({
-                    name: new FormControl(this.client.name, [
-                        Validators.required
-                    ]),
-                    age: new FormControl(this.client.age, [
-                        Validators.required, FixedValidator, PositiveValidator
-                    ]),
-                    gender: new FormControl(this.client.gender, [
-                        Validators.required
-                    ]),
-                    balance: new FormControl(this.client.balance, [
-                        Validators.required, PositiveValidator
-                    ]),
-                    company: new FormControl(this.client.company),
-                    email: new FormControl(this.client.email),
-                    phone: new FormControl(this.client.phone),
-                    address: new FormControl(this.client.address),
-                    registered: new FormControl(this.client.registered),
-                    greeting: new FormControl(this.client.greeting),
-                    favoriteFruit: new FormControl(this.client.favoriteFruit),
-                    tags: new FormControl(),
-                    friends: new FormControl(),
-                });
-            });
-        });
-
-        function PositiveValidator(control: AbstractControl): { [key: string]: boolean } | any {
-            // if (isNaN(+control.value) || control.value < 0) {
-            //     return {'age': true};
-            // }
-            if (control.value < 0) {
-                return {'age': true};
-            }
-            return false;
-        }
-
-        function FixedValidator(control: AbstractControl): { [key: string]: boolean } | any {
-            if (!Number.isInteger(+control.value)) {
-                return {'age': true};
-            } else if (Number.isInteger(+control.value)) {
-                return false;
-            }
-            return null;
-        }
+        this.formGroup();
+        this.getDataByClientId();
     }
 
     public openEditMode() {
@@ -102,7 +40,6 @@ export class ClientInfoComponent implements OnInit {
     }
 
     public onSubmit() {
-        console.log(this.form);
         if (this.form.valid) {
             let generalInfo = {
                 name: this.form.value.name,
@@ -140,7 +77,6 @@ export class ClientInfoComponent implements OnInit {
     public addTag() {
         this.client.tags.push(this.form.value.tags);
         this.form.value.tags = '';
-        console.log(this.client);
     }
 
     public addFriend() {
@@ -155,5 +91,78 @@ export class ClientInfoComponent implements OnInit {
 
     public closeNotif() {
         this.success = false;
+    }
+
+    private getDataByClientId() {
+        this.route.params.subscribe((params: Params) => {
+            this.mainPageService.getInfoList().subscribe(data => {
+                this.loading = false;
+                this.initFormWithClientData(params, data);
+            });
+        });
+    }
+
+    private initFormWithClientData(params, data) {
+        this.client = data.filter(item => item._id === params.id)[0];
+        this.selected = this.client.gender;
+        this.form = new FormGroup({
+            name: new FormControl(this.client.name, [
+                Validators.required
+            ]),
+            age: new FormControl(this.client.age, [
+                Validators.required, FixedValidator, PositiveValidator
+            ]),
+            gender: new FormControl(this.client.gender, [
+                Validators.required
+            ]),
+            balance: new FormControl(this.client.balance, [
+                Validators.required, PositiveValidator
+            ]),
+            company: new FormControl(this.client.company),
+            email: new FormControl(this.client.email),
+            phone: new FormControl(this.client.phone),
+            address: new FormControl(this.client.address),
+            registered: new FormControl(this.client.registered),
+            greeting: new FormControl(this.client.greeting),
+            favoriteFruit: new FormControl(this.client.favoriteFruit),
+            tags: new FormControl(),
+            friends: new FormControl(),
+        });
+        function PositiveValidator(control: AbstractControl): { [key: string]: boolean } | any {
+            // if (isNaN(+control.value) || control.value < 0) {
+            //     return {'age': true};
+            // }
+            if (control.value < 0) {
+                return {'age': true};
+            }
+            return false;
+        }
+
+        function FixedValidator(control: AbstractControl): { [key: string]: boolean } | any {
+            if (!Number.isInteger(+control.value)) {
+                return {'age': true};
+            } else if (Number.isInteger(+control.value)) {
+                return false;
+            }
+            return null;
+        }
+    }
+
+    private formGroup() {
+        this.form = new FormGroup({
+            name: new FormControl(),
+            age: new FormControl(),
+            gender: new FormControl(),
+            balance: new FormControl(),
+            company: new FormControl(),
+            email: new FormControl(),
+            phone: new FormControl(),
+            address: new FormControl(),
+            registered: new FormControl(),
+            greeting: new FormControl(),
+            favoriteFruit: new FormControl(),
+            tags: new FormControl(),
+            friends: new FormControl()
+        });
     }
 }

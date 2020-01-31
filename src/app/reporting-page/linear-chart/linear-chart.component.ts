@@ -10,10 +10,10 @@ export class LinearChartComponent implements OnInit {
 
     constructor(
         public reportingPageService: ReportingPageService
-    ) {}
+    ) {
+    }
 
     public checked = false;
-
     public lineChartData = [
         {data: [], label: 'Balance'}
     ];
@@ -57,7 +57,6 @@ export class LinearChartComponent implements OnInit {
             ],
         },
     };
-
     public lineChartColors = [
         {
             backgroundColor: 'rgba(148,159,177,0.2)',
@@ -71,20 +70,13 @@ export class LinearChartComponent implements OnInit {
     public lineChartLegend = true;
     public lineChartType = 'line';
 
-
     ngOnInit() {
         this.lineChartData = this.reportingPageService.lineChartData;
         this.lineChartLabels = this.reportingPageService.lineChartLabels;
     }
 
-
     public toggleActive() {
         this.checked = !this.checked;
         this.reportingPageService.toggleActive(this.checked);
     }
-
-
-
-
-
 }
