@@ -129,10 +129,7 @@ export class ClientInfoComponent implements OnInit {
             friends: new FormControl(),
         });
         function PositiveValidator(control: AbstractControl): { [key: string]: boolean } | any {
-            // if (isNaN(+control.value) || control.value < 0) {
-            //     return {'age': true};
-            // }
-            if (control.value < 0) {
+            if (isNaN(+control.value) || control.value < 0) {
                 return {'age': true};
             }
             return false;
